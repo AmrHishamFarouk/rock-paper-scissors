@@ -1,86 +1,88 @@
+//vaiables to put choices of the computer and player
 let computer;
 let player;
 
 //putting variables for the players scores
 let compScore = 0,
     playerScore = 0;
+
+//vriable to check if the game ended
+let gameRun = true;
+
 //loop for the sequence of the program
 do {
-    console.log("hello");
+
     computer = getComputerChoice();
-    player = getPlayerschoice();
-    console.log('nice')
+    player =  getPlayerschoice();
     playRound(player,computer);
-    checkending(compScore,playerScore);
+    checkending(compScore,playerScore);    
+
 }
 while(gameRun);
 
 
 //function to make a random choice:
 //(rock or paper or scissors)
+
 function getComputerChoice(){
     let num =Math.floor(Math.random() * 3) + 1;
-    if(num == 1){
-        return 'rock';
-    }
-    else if(num == 2){
-        return 'paper';
-    }
-    else if(num == 3){
-        return 'scissors';
-    }
+    //1 is rock , 2 is scissors , 3 is paper
+    return num;
 }
 
 //function to get players choice
 function getPlayerschoice(){
+    let playerchoice = 0;
     do{
-        let player = prompt("1 for rock, 2 for scissors, 3 for paper");
-        //convert it to lower case to make it easier to compare
+        
+        playerchoice = parseInt(prompt("1 for rock, 2 for scissors, 3 for paper"));
+
     }
-    while(player!='1'||player!='2'||player!='3');
-    return player;   
+    while( playerchoice < 0 && playerchoice >= 3 );
+
+    return playerchoice;   
 }
 
 
 //function to check the winner
 function playRound(player,computer){
     if(player==computer){
-        return 'draw';
+        console.log('draw');
+        return;
     }
-    else if(computer =='scissors'&& player =='1'){
-        let result = 'you win! rock beats '+computer;
+    else if(computer == 2 && player == 1){
+        console.log('you win! rock beats scissors');
         playerScore++;
-        return result;
+        return ;
     }
-    else if(computer =='paper' && player == '1'){
-        let result = 'you lose! '+ computer +' beats rock';
+    else if(computer == 3 && player == 1){
+        console.log('you lose! paper beats rock');
         compScore++;
-        return result;
+        return ;
     }
-    else if(computer =='rock' && player == '2'){
-        let result = 'you lose! '+ computer +' beats scissors';
+    else if(computer == 1 && player == 2){
+        console.log('you lose! rock beats scissors');
         compScore++;
-        return result;
+        return ;
     }
-    else if(computer =='paper' && player == '2'){
-        let result = 'you win! scissors beats '+computer;
+    else if(computer == 3 && player == 2){
+        console.log('you win! scissors beats paper');
         playerScore++;
-        return result;
+        return ;
     }
-    else if(computer =='scissors' && player == '3'){
-        let result = 'you lose! '+ computer +' beats paper';
+    else if(computer == 2 && player == 3){
+        console.log('you lose! scissors beats paper');
         compScore++;
-        return result;
+        return ;
     }
-    else if(computer =='rock' && player == '3'){
-        let result = 'you win! paper beats '+computer;
+    else if(computer == 1 && player == 3){
+        console.log('you win! paper beats rock');
         playerScore++;
-        return result;
+        return ;
     }
 }
 
-let gameRun = true;
-
+//function to check if someone winned to declare winner
 function checkending(compScore,playerScore){
     if(compScore == 5){
         console.log('computer wins!')
