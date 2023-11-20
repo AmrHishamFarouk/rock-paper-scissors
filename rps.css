@@ -1,3 +1,20 @@
 body{
 	background: #d9b650; 
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.container{
+	background-color: #83580b;
+	min-height: 30vw;
+	max-width: 40vw;
+	border-radius: 2rem;
+}
+button{
+	height: 10rem;
+	width: 10rem;
+	border-radius: 100%;
+}
+button i{
+	font-size: 5rem;
 }
