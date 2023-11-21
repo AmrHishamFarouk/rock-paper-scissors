@@ -1,7 +1,7 @@
 body{
-	background: #d9b650; 
+	background: #f5dd7b; 
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-content: center;
 }
 .container{
@@ -14,7 +14,20 @@ button{
 	height: 10rem;
 	width: 10rem;
 	border-radius: 100%;
+	margin: 0 1em;
+}
+
+button:hover{
+	background-color: #f5dd7b;
+}
+button:active{
+	background-color: #d9b650;
 }
 button i{
 	font-size: 5rem;
+}
+.scores{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
