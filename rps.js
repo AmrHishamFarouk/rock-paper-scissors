@@ -9,16 +9,43 @@ let compScore = 0,
 //vriable to check if the game ended
 let gameRun = true;
 
+const rbutton = document.querySelector('rockbtn');
+const pbutton = document.querySelector('paperbtn');
+const sbutton = document.querySelector('scissorsbtn');
 //loop for the sequence of the program
-do {
 
-    computer = getComputerChoice();
-    player =  getPlayerschoice();
-    playRound(player,computer);
-    checkending(compScore,playerScore);    
+rbutton.addEventListener('click',() =>{
+    do {
+        computer = getComputerChoice();
+        player =  1;
+        playRound(player,computer);
+        checkending(compScore,playerScore);    
+    
+    }
+    while(gameRun);
+});
 
-}
-while(gameRun);
+pbutton.addEventListener('click',() =>{
+    do {
+        computer = getComputerChoice();
+        player =  3;
+        playRound(player,computer);
+        checkending(compScore,playerScore);    
+    
+    }
+    while(gameRun);
+})
+
+sbutton.addEventListener('click',() =>{
+    do {
+        computer = getComputerChoice();
+        player =  2;
+        playRound(player,computer);
+        checkending(compScore,playerScore);    
+    
+    }
+    while(gameRun);
+});
 
 
 //function to make a random choice:
@@ -28,19 +55,6 @@ function getComputerChoice(){
     let num =Math.floor(Math.random() * 3) + 1;
     //1 is rock , 2 is scissors , 3 is paper
     return num;
-}
-
-//function to get players choice
-function getPlayerschoice(){
-    let playerchoice = 0;
-    do{
-        
-        playerchoice = parseInt(prompt("1 for rock, 2 for scissors, 3 for paper"));
-
-    }
-    while( playerchoice < 0 && playerchoice >= 3 );
-
-    return playerchoice;   
 }
 
 
