@@ -9,42 +9,58 @@ let compScore = 0,
 //vriable to check if the game ended
 let gameRun = true;
 
-const rbutton = document.querySelector('rockbtn');
-const pbutton = document.querySelector('paperbtn');
-const sbutton = document.querySelector('scissorsbtn');
-//loop for the sequence of the program
+const rbutton = document.querySelector('.rockbtn');
+const pbutton = document.querySelector('.paperbtn');
+const sbutton = document.querySelector('.scissorsbtn');
+const rstbutton = document.querySelector('.rstbtn');
+
+rstbutton.addEventListener('click',() =>{
+    compScore = 0;
+    playerScore = 0;
+    gameRun = true;
+    document.querySelector('.playscore').innerHTML= playerScore;
+    document.querySelector('.compscore').innerHTML= compScore;
+    document.querySelector('.declarWinner').innerHTML='';
+    document.querySelector('.declareRoundWinner').innerHTML = '';
+    document.querySelector('.alert').innerHTML='';
+
+});
+
 
 rbutton.addEventListener('click',() =>{
-    do {
+    if(gameRun == true){
         computer = getComputerChoice();
         player =  1;
         playRound(player,computer);
-        checkending(compScore,playerScore);    
-    
+        checkending(compScore,playerScore); 
+    }   
+    else{
+        document.querySelector('.alert').innerHTML='press reset';
     }
-    while(gameRun);
 });
 
 pbutton.addEventListener('click',() =>{
-    do {
-        computer = getComputerChoice();
-        player =  3;
-        playRound(player,computer);
-        checkending(compScore,playerScore);    
-    
-    }
-    while(gameRun);
-})
+        if(gameRun == true){
+            computer = getComputerChoice();
+            player =  3;
+            playRound(player,computer);
+            checkending(compScore,playerScore);    
+        }
+        else{
+            document.querySelector('.alert').innerHTML='press reset';
+        }
+    });
 
 sbutton.addEventListener('click',() =>{
-    do {
+    if(gameRun == true){
         computer = getComputerChoice();
         player =  2;
         playRound(player,computer);
-        checkending(compScore,playerScore);    
-    
+        checkending(compScore,playerScore);        
     }
-    while(gameRun);
+    else{
+        document.querySelector('.alert').innerHTML='press reset';
+    }
 });
 
 
@@ -61,37 +77,43 @@ function getComputerChoice(){
 //function to check the winner
 function playRound(player,computer){
     if(player==computer){
-        console.log('draw');
+        document.querySelector('.declareRoundWinner').innerHTML = 'draw';
         return;
     }
     else if(computer == 2 && player == 1){
-        console.log('you win! rock beats scissors');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you win! rock beats scissors';
         playerScore++;
+        document.querySelector('.playscore').innerHTML= playerScore;
         return ;
     }
     else if(computer == 3 && player == 1){
-        console.log('you lose! paper beats rock');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you lose! paper beats rock';
         compScore++;
+        document.querySelector('.compscore').innerHTML= compScore;
         return ;
     }
     else if(computer == 1 && player == 2){
-        console.log('you lose! rock beats scissors');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you lose! rock beats scissors';
         compScore++;
+        document.querySelector('.compscore').innerHTML= compScore;
         return ;
     }
     else if(computer == 3 && player == 2){
-        console.log('you win! scissors beats paper');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you win! scissors beats paper';
         playerScore++;
+        document.querySelector('.playscore').innerHTML= playerScore;
         return ;
     }
     else if(computer == 2 && player == 3){
-        console.log('you lose! scissors beats paper');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you lose! scissors beats paper';
         compScore++;
+        document.querySelector('.compscore').innerHTML= compScore;
         return ;
     }
     else if(computer == 1 && player == 3){
-        console.log('you win! paper beats rock');
+        document.querySelector('.declareRoundWinner').innerHTML = 'you win! paper beats rock';
         playerScore++;
+        document.querySelector('.playscore').innerHTML= playerScore;
         return ;
     }
 }
@@ -99,11 +121,11 @@ function playRound(player,computer){
 //function to check if someone winned to declare winner
 function checkending(compScore,playerScore){
     if(compScore == 5){
-        console.log('computer wins!')
+        document.querySelector('.declarWinner').innerHTML='computer wins!';
         gameRun = false;
     }
     else if(playerScore == 5){
-        consolelog('player wins!')
+        document.querySelector('.declarWinner').innerHTML= 'player wins!'
         gameRun = false;
     }
     return;

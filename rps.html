@@ -6,12 +6,15 @@
     <title>rock paper scissors</title>
     <!-- to make the icons work -->
     <script src="https://kit.fontawesome.com/c3aaa9e50a.js" crossorigin="anonymous"></script>
-    <script src="rps.js"></script>
     <link rel="stylesheet" href="rps.css">
+    <script src="rps.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1 style="margin: 1em 1em;">rock paper scissors Game</h1>
+        <h2 class="declareRoundWinner"></h2>
+        <h1 class="declarWinner"></h1>
+        <h2 class="alert"></h2>
         <div class="scores">
             <div class="scorepart">
                 <h2>computer score:</h2>
@@ -22,9 +25,12 @@
                 <h2 class="playscore">0</h2>
             </div>
         </div>
-        <button class="rockbtn"><i class="fa-regular fa-hand-back-fist"></i></button>
-        <button class="paperbtn"><i class="fa-regular fa-hand"></i></button>
-        <button class="scissorsbtn"><i class="fa-solid fa-hand-peace"></i></button>
+        <div class="buttons">
+            <button class="rockbtn"><i class="fa-regular fa-hand-back-fist"></i></button>
+            <button class="paperbtn"><i class="fa-regular fa-hand"></i></button>
+            <button class="scissorsbtn"><i class="fa-solid fa-hand-peace"></i></button>
+        </div>
+        <button class="rstbtn"><h5>reset button</h5></button>
     </div>
 </body>
 </html>

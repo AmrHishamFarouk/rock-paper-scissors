@@ -5,9 +5,13 @@ body{
 	align-content: center;
 }
 .container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
 	background-color: #83580b;
 	min-height: 30vw;
-	max-width: 40vw;
+	max-width: 60vw;
 	border-radius: 2rem;
 }
 button{
@@ -25,6 +29,16 @@ button:active{
 }
 button i{
 	font-size: 5rem;
+}
+.rstbtn{
+	border-radius: 15%;
+	min-height: 4rem;
+	max-width: 20rem;
+	padding: 0.5em;
+	margin: 1em;
+}
+.rstbtn h5{
+	font-size: 1rem;
 }
 .scores{
 	display: flex;
